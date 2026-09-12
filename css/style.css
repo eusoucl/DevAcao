@@ -44,19 +44,32 @@
 }
 
 html {
+    width: 100%;
     font-size: 100%;
     scroll-behavior: smooth;
 }
 
 body {
     margin: 0;
+    padding: 0;
     width: 100%;
-    overflow-x: hidden;
+    min-width: 0;
     font-family: var(--fonte-principal);
     font-size: var(--tamanho-base);
     line-height: 1.5;
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
+}
+
+
+/* =========================================
+   IMAGENS RESPONSIVAS
+   ========================================= */
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 
@@ -86,6 +99,10 @@ header p {
 /* =========================================
    NAVEGAÇÃO
    ========================================= */
+
+nav {
+    width: 100%;
+}
 
 nav ul {
     display: flex;
@@ -162,10 +179,10 @@ nav a:focus-visible {
    ========================================= */
 
 main {
-    width: 100%;
+    width: calc(100% - 2rem);
     max-width: var(--largura-maxima);
     margin: var(--espaco-5) auto;
-    padding: 0 var(--espaco-2);
+    padding: 0;
 }
 
 
@@ -175,9 +192,10 @@ main {
 
 section {
     width: 100%;
+    max-width: 100%;
     background-color: var(--cor-fundo-card);
     padding: var(--espaco-4);
-    margin-bottom: var(--espaco-4);
+    margin: 0 auto var(--espaco-4);
     border-radius: var(--raio-grande);
 }
 
@@ -187,12 +205,23 @@ section h2 {
     font-size: var(--tamanho-subtitulo);
 }
 
+section img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    margin: var(--espaco-3) auto;
+    border-radius: var(--raio-medio);
+}
+
 
 /* =========================================
    CARDS / ARTICLES
    ========================================= */
 
 article {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     margin-top: var(--espaco-3);
     padding: var(--espaco-3);
     border: 1px solid var(--cor-borda);
@@ -205,15 +234,10 @@ article h3 {
     margin-top: 0;
 }
 
-
-/* Imagens responsivas */
-
-article img,
-section img {
-    width: 100%;
-    max-width: 500px;
+article img {
+    width: auto;
+    max-width: 100%;
     height: auto;
-    display: block;
     margin: var(--espaco-3) auto;
     border-radius: var(--raio-medio);
 }
@@ -226,6 +250,7 @@ section img {
 .iniciativas {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
     gap: var(--espaco-3);
 }
 
@@ -235,7 +260,8 @@ section img {
 }
 
 .iniciativas article {
-    flex: 1;
+    flex: 1 1 280px;
+    min-width: 0;
 }
 
 
@@ -245,12 +271,14 @@ section img {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    width: 100%;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
     gap: var(--espaco-3);
 }
 
 .grid > * {
     grid-column: span 12;
+    min-width: 0;
 }
 
 
@@ -264,6 +292,7 @@ section img {
     justify-content: space-between;
     gap: var(--espaco-2);
     flex-wrap: wrap;
+    min-width: 0;
 }
 
 
@@ -272,14 +301,17 @@ section img {
    ========================================= */
 
 form {
+    width: 100%;
+    max-width: 100%;
     margin-top: var(--espaco-3);
 }
 
 fieldset {
+    min-width: 0;
     border: 1px solid var(--cor-borda);
     border-radius: var(--raio-medio);
     padding: var(--espaco-3);
-    margin-bottom: var(--espaco-3);
+    margin: 0 0 var(--espaco-3);
 }
 
 legend {
@@ -297,9 +329,11 @@ label {
 }
 
 input,
-select {
+select,
+textarea {
     width: 100%;
     max-width: 100%;
+    min-width: 0;
     padding: var(--espaco-1);
     margin-top: 6px;
     border: 1px solid var(--cor-input);
@@ -321,7 +355,8 @@ input[type="checkbox"] {
 /* Foco dos campos */
 
 input:focus-visible,
-select:focus-visible {
+select:focus-visible,
+textarea:focus-visible {
     outline: 3px solid var(--cor-secundaria);
     outline-offset: 2px;
     border-color: var(--cor-secundaria);
@@ -333,6 +368,7 @@ select:focus-visible {
    ========================================= */
 
 button {
+    max-width: 100%;
     background-color: var(--cor-primaria);
     color: var(--cor-texto-claro);
     border: none;
@@ -376,6 +412,74 @@ footer p {
 
 
 /* =========================================
+   BADGE
+   ========================================= */
+
+.badge {
+    display: inline-block;
+    max-width: 100%;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto-claro);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: var(--tamanho-pequeno);
+    font-weight: bold;
+}
+
+
+/* =========================================
+   ALERTA
+   ========================================= */
+
+.alert {
+    width: 100%;
+    max-width: 100%;
+    background-color: #e8f5e9;
+    color: var(--cor-primaria);
+    border: 1px solid var(--cor-secundaria);
+    border-radius: var(--raio-medio);
+    padding: var(--espaco-2);
+}
+
+
+/* =========================================
+   MODAL
+   ========================================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    padding: var(--espaco-2);
+    z-index: 1000;
+}
+
+.modal.ativo {
+    display: flex;
+}
+
+.modal-conteudo {
+    width: 100%;
+    max-width: 500px;
+    background-color: var(--cor-fundo-card);
+    padding: var(--espaco-4);
+    border-radius: var(--raio-grande);
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-conteudo h2 {
+    color: var(--cor-primaria);
+    margin-top: 0;
+}
+
+
+/* =========================================
    BREAKPOINT - NOTEBOOK
    ========================================= */
 
@@ -412,14 +516,18 @@ footer p {
 
     nav ul {
         display: none;
+        width: 100%;
         flex-direction: column;
         gap: var(--espaco-1);
         margin-top: var(--espaco-2);
-        width: 100%;
     }
 
     #menu-toggle:checked + .menu-icon + ul {
         display: flex;
+    }
+
+    nav li {
+        width: 100%;
     }
 
     nav a {
@@ -428,17 +536,20 @@ footer p {
     }
 
     main {
-        width: 100%;
+        width: calc(100% - 2rem);
+        max-width: 100%;
         margin: var(--espaco-4) auto;
+        padding: 0;
     }
 
     section {
         width: 100%;
+        max-width: 100%;
         padding: var(--espaco-3);
     }
 
     .grid {
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(6, minmax(0, 1fr));
     }
 
     .grid > * {
@@ -451,6 +562,7 @@ footer p {
 
     .iniciativas article {
         width: 100%;
+        max-width: 100%;
     }
 }
 
@@ -474,12 +586,20 @@ footer p {
 @media (max-width: 480px) {
 
     html {
+        width: 100%;
         font-size: 90%;
+    }
+
+    body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
     }
 
     header {
         width: 100%;
         padding: var(--espaco-3) var(--espaco-2);
+        text-align: center;
     }
 
     header h1 {
@@ -490,40 +610,107 @@ footer p {
         font-size: 1rem;
     }
 
-    main {
+    nav {
         width: 100%;
-        padding: 0 var(--espaco-1);
+    }
+
+    nav ul {
+        width: 100%;
+        padding: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    main {
+        width: calc(100% - 1rem);
+        max-width: 100%;
         margin: var(--espaco-3) auto;
+        padding: 0;
     }
 
     section {
         width: 100%;
+        max-width: 100%;
+        margin: 0 auto var(--espaco-3);
         padding: var(--espaco-2);
-        margin-bottom: var(--espaco-3);
     }
 
     article {
         width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        margin-left: auto;
+        margin-right: auto;
         padding: var(--espaco-2);
     }
 
+    img,
     article img,
     section img {
-        width: 100%;
+        display: block;
+        width: auto;
         max-width: 100%;
         height: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .iniciativas {
+        width: 100%;
+        max-width: 100%;
+        flex-direction: column;
+    }
+
+    .iniciativas article {
+        width: 100%;
+        max-width: 100%;
+        flex: none;
     }
 
     .grid {
-        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 100%;
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .grid > * {
         grid-column: span 1;
+        min-width: 0;
+    }
+
+    .flex {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    fieldset {
+        width: 100%;
+        max-width: 100%;
+        padding: var(--espaco-2);
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
     }
 
     button {
         width: 100%;
+        max-width: 100%;
+    }
+
+    .modal {
+        padding: var(--espaco-1);
+    }
+
+    .modal-conteudo {
+        width: calc(100% - 1rem);
+        max-width: 500px;
+        margin: auto;
+        padding: var(--espaco-2);
     }
 }
 
@@ -546,6 +733,10 @@ footer p {
         padding: var(--espaco-1);
     }
 
+    main {
+        width: calc(100% - 0.75rem);
+    }
+
     section {
         padding: var(--espaco-1);
     }
@@ -553,67 +744,4 @@ footer p {
     article {
         padding: var(--espaco-1);
     }
-}
-
-
-/* =========================================
-   BADGE
-   ========================================= */
-
-.badge {
-    display: inline-block;
-    background-color: var(--cor-secundaria);
-    color: var(--cor-texto-claro);
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: var(--tamanho-pequeno);
-    font-weight: bold;
-}
-
-
-/* =========================================
-   ALERTA
-   ========================================= */
-
-.alert {
-    background-color: #e8f5e9;
-    color: var(--cor-primaria);
-    border: 1px solid var(--cor-secundaria);
-    border-radius: var(--raio-medio);
-    padding: var(--espaco-2);
-}
-
-
-/* =========================================
-   MODAL
-   ========================================= */
-
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    align-items: center;
-    justify-content: center;
-    padding: var(--espaco-2);
-    z-index: 1000;
-}
-
-.modal.ativo {
-    display: flex;
-}
-
-.modal-conteudo {
-    background-color: var(--cor-fundo-card);
-    width: 100%;
-    max-width: 500px;
-    padding: var(--espaco-4);
-    border-radius: var(--raio-grande);
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.modal-conteudo h2 {
-    color: var(--cor-primaria);
-    margin-top: 0;
 }
