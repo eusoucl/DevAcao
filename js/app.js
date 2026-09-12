@@ -38,6 +38,7 @@ function carregarPagina() {
                 <img
                     src="../img/Programcorp.png"
                     alt="Imagem mostrando como HTML, CSS e JavaScript juntos formam uma pessoa"
+                    decoding="async"
                 >
             </section>
 
@@ -178,6 +179,7 @@ function carregarPagina() {
     }
 
     else if (rota === "#cadastro") {
+
         conteudo.innerHTML = `
             <section>
 
@@ -286,7 +288,6 @@ function carregarPagina() {
 
                     </fieldset>
 
-
                     <fieldset>
 
                         <legend>Endereço</legend>
@@ -315,7 +316,6 @@ function carregarPagina() {
                         </div>
 
                     </fieldset>
-
 
                     <fieldset>
 
@@ -379,11 +379,9 @@ function carregarPagina() {
 
                     </fieldset>
 
-
                     <button type="submit">
                         Enviar cadastro
                     </button>
-
 
                     <p
                         id="mensagem-sucesso"
@@ -392,7 +390,6 @@ function carregarPagina() {
                     ></p>
 
                 </form>
-
 
                 <section>
 
