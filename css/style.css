@@ -1,0 +1,574 @@
+
+
+:root {
+
+    /* Cores */
+    --cor-primaria: #1b5e20;
+    --cor-primaria-hover: #2e7d32;
+    --cor-secundaria: #43a047;
+    --cor-fundo: #f4f7f6;
+    --cor-fundo-card: #ffffff;
+    --cor-texto: #222222;
+    --cor-texto-claro: #ffffff;
+    --cor-borda: #dddddd;
+    --cor-input: #bbbbbb;
+
+    /* Tipografia */
+    --fonte-principal: Arial, sans-serif;
+    --tamanho-base: 1rem;
+    --tamanho-pequeno: 0.875rem;
+    --tamanho-titulo: 2.5rem;
+    --tamanho-subtitulo: 1.5rem;
+
+    /* Espaçamentos */
+    --espaco-1: 0.5rem;
+    --espaco-2: 1rem;
+    --espaco-3: 1.5rem;
+    --espaco-4: 2rem;
+    --espaco-5: 2.5rem;
+
+    /* Bordas */
+    --raio-pequeno: 5px;
+    --raio-medio: 8px;
+    --raio-grande: 10px;
+
+    /* Largura */
+    --largura-maxima: 1000px;
+}
+
+
+/* =========================================
+   CONFIGURAÇÕES GERAIS
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: var(--fonte-principal);
+    font-size: var(--tamanho-base);
+    line-height: 1.5;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+header {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    text-align: center;
+    padding: var(--espaco-5) var(--espaco-3);
+}
+
+header h1 {
+    margin: 0;
+    font-size: var(--tamanho-titulo);
+}
+
+header p {
+    margin: var(--espaco-1) 0 var(--espaco-3);
+    font-size: 1.125rem;
+}
+
+
+/* =========================================
+   NAVEGAÇÃO
+   Flexbox para alinhamento dos itens
+   ========================================= */
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: var(--espaco-2);
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a {
+    display: block;
+    color: var(--cor-texto-claro);
+    text-decoration: none;
+    font-weight: bold;
+    padding: var(--espaco-1) var(--espaco-2);
+    border-radius: var(--raio-pequeno);
+    transition: background-color 0.2s ease,
+                transform 0.2s ease;
+}
+
+/* Estado hover da navegação */
+
+nav a:hover {
+    background-color: var(--cor-primaria-hover);
+    transform: translateY(-2px);
+}
+
+/* Estado de foco para acessibilidade */
+
+nav a:focus {
+    outline: 3px solid #ffffff;
+    outline-offset: 2px;
+}
+
+
+/* =========================================
+   MENU HAMBÚRGUER
+   ========================================= */
+
+/* Checkbox usado para abrir e fechar o menu */
+
+#menu-toggle {
+    display: none;
+}
+
+/* Ícone do menu escondido em telas grandes */
+
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--cor-texto-claro);
+    padding: var(--espaco-1);
+}
+
+
+/* =========================================
+   CONTEÚDO PRINCIPAL
+   ========================================= */
+
+main {
+    max-width: var(--largura-maxima);
+    margin: var(--espaco-5) auto;
+    padding: 0 var(--espaco-2);
+}
+
+
+/* =========================================
+   SEÇÕES
+   ========================================= */
+
+section {
+    background-color: var(--cor-fundo-card);
+    padding: var(--espaco-4);
+    margin-bottom: var(--espaco-4);
+    border-radius: var(--raio-grande);
+}
+
+section h2 {
+    color: var(--cor-primaria);
+    margin-top: 0;
+    font-size: var(--tamanho-subtitulo);
+}
+
+
+/* =========================================
+   CARDS / ARTICLES
+   ========================================= */
+
+article {
+    margin-top: var(--espaco-3);
+    padding: var(--espaco-3);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-medio);
+    background-color: var(--cor-fundo-card);
+}
+
+article h3 {
+    color: var(--cor-secundaria);
+    margin-top: 0;
+}
+
+article img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+    margin: var(--espaco-3) auto;
+    border-radius: var(--raio-medio);
+}
+
+
+/* =========================================
+   FLEXBOX PARA CARDS DAS INICIATIVAS
+   ========================================= */
+
+.iniciativas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espaco-3);
+}
+
+.iniciativas h2,
+.iniciativas > p {
+    width: 100%;
+}
+
+.iniciativas article {
+    flex: 1;
+}
+
+
+/* =========================================
+   GRID DE 12 COLUNAS
+   ========================================= */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--espaco-3);
+}
+
+/* Elementos ocupando toda a largura */
+
+.grid > * {
+    grid-column: span 12;
+}
+
+
+/* =========================================
+   FLEXBOX PARA COMPONENTES INTERNOS
+   ========================================= */
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espaco-2);
+    flex-wrap: wrap;
+}
+
+
+/* =========================================
+   FORMULÁRIOS
+   ========================================= */
+
+form {
+    margin-top: var(--espaco-3);
+}
+
+fieldset {
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-medio);
+    padding: var(--espaco-3);
+    margin-bottom: var(--espaco-3);
+}
+
+legend {
+    color: var(--cor-primaria);
+    font-weight: bold;
+    padding: 0 var(--espaco-1);
+}
+
+form div {
+    margin-bottom: var(--espaco-3);
+}
+
+label {
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: var(--espaco-1);
+    margin-top: 6px;
+    border: 1px solid var(--cor-input);
+    border-radius: var(--raio-pequeno);
+    font-family: inherit;
+    font-size: var(--tamanho-base);
+    background-color: #ffffff;
+}
+
+
+/* Checkbox */
+
+input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+
+/* Foco dos campos */
+
+input:focus,
+select:focus {
+    outline: 2px solid var(--cor-secundaria);
+    border-color: var(--cor-secundaria);
+}
+
+
+/* =========================================
+   BOTÕES
+   ========================================= */
+
+button {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: var(--tamanho-base);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease,
+                transform 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--cor-primaria-hover);
+    transform: translateY(-2px);
+}
+
+button:focus {
+    outline: 3px solid var(--cor-secundaria);
+    outline-offset: 2px;
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+footer {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    text-align: center;
+    padding: var(--espaco-3);
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* =========================================
+   BREAKPOINT - NOTEBOOK
+   ========================================= */
+
+@media (max-width: 1024px) {
+
+    main {
+        max-width: 900px;
+    }
+
+    header h1 {
+        font-size: 2.3rem;
+    }
+}
+
+
+/* =========================================
+   BREAKPOINT - TABLET
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    header {
+        padding: var(--espaco-4) var(--espaco-2);
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    /* Mostra o botão hambúrguer */
+
+    .menu-icon {
+        display: block;
+    }
+
+    /* Esconde o menu inicialmente */
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        gap: var(--espaco-1);
+        margin-top: var(--espaco-2);
+    }
+
+    /* Mostra o menu quando o hambúrguer é acionado */
+
+    #menu-toggle:checked + .menu-icon + ul {
+        display: flex;
+    }
+
+    nav a {
+        width: 100%;
+        text-align: center;
+    }
+
+    main {
+        margin: var(--espaco-4) auto;
+    }
+
+    section {
+        padding: var(--espaco-3);
+    }
+
+    .grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .grid > * {
+        grid-column: span 6;
+    }
+}
+
+
+/* =========================================
+   BREAKPOINT - TELAS GRANDES
+   ========================================= */
+
+@media (min-width: 1200px) {
+
+    main {
+        max-width: 1100px;
+    }
+}
+
+
+/* =========================================
+   BREAKPOINT - CELULAR
+   ========================================= */
+
+@media (max-width: 480px) {
+
+    html {
+        font-size: 90%;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    main {
+        padding: 0 var(--espaco-1);
+        margin: var(--espaco-3) auto;
+    }
+
+    section {
+        padding: var(--espaco-2);
+        margin-bottom: var(--espaco-3);
+    }
+
+    article {
+        padding: var(--espaco-2);
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .grid > * {
+        grid-column: span 1;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+
+/* =========================================
+   BREAKPOINT - CELULAR PEQUENO
+   ========================================= */
+
+@media (max-width: 360px) {
+
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    header p {
+        font-size: 0.95rem;
+    }
+
+    nav a {
+        padding: var(--espaco-1);
+    }
+
+    section {
+        padding: var(--espaco-1);
+    }
+
+    article {
+        padding: var(--espaco-1);
+    }
+
+}
+
+.badge {
+    display: inline-block;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto-claro);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: var(--tamanho-pequeno);
+    font-weight: bold;
+}
+
+
+/* Alerta */
+
+.alert {
+    background-color: #e8f5e9;
+    color: var(--cor-primaria);
+    border: 1px solid var(--cor-secundaria);
+    border-radius: var(--raio-medio);
+    padding: var(--espaco-2);
+}
+
+
+/* Modal */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    padding: var(--espaco-2);
+}
+
+.modal.ativo {
+    display: flex;
+}
+
+.modal-conteudo {
+    background-color: var(--cor-fundo-card);
+    width: 100%;
+    max-width: 500px;
+    padding: var(--espaco-4);
+    border-radius: var(--raio-grande);
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-conteudo h2 {
+    color: var(--cor-primaria);
+    margin-top: 0;
+}
