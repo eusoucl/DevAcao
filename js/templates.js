@@ -23,7 +23,14 @@ export function gerarCardsIniciativas() {
     return iniciativas.map(iniciativa => `
         <article>
             <h3>${iniciativa.titulo}</h3>
-            <img src="${iniciativa.imagem}" alt="${iniciativa.alt}">
+
+            <img
+                src="${iniciativa.imagem}"
+                alt="${iniciativa.alt}"
+                loading="lazy"
+                decoding="async"
+            >
+
             <p>${iniciativa.descricao}</p>
         </article>
     `).join("");
