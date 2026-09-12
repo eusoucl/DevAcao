@@ -1,5 +1,3 @@
-
-
 :root {
 
     /* Cores */
@@ -109,9 +107,11 @@ nav a {
     font-weight: bold;
     padding: var(--espaco-1) var(--espaco-2);
     border-radius: var(--raio-pequeno);
-    transition: background-color 0.2s ease,
-                transform 0.2s ease;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
 }
+
 
 /* Estado hover da navegação */
 
@@ -120,9 +120,10 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
+
 /* Estado de foco para acessibilidade */
 
-nav a:focus {
+nav a:focus-visible {
     outline: 3px solid #ffffff;
     outline-offset: 2px;
 }
@@ -132,11 +133,23 @@ nav a:focus {
    MENU HAMBÚRGUER
    ========================================= */
 
-/* Checkbox usado para abrir e fechar o menu */
+/*
+   Checkbox visualmente oculto, mas mantido
+   acessível para navegação por teclado.
+*/
 
 #menu-toggle {
-    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
+
 
 /* Ícone do menu escondido em telas grandes */
 
@@ -147,6 +160,15 @@ nav a:focus {
     font-weight: bold;
     color: var(--cor-texto-claro);
     padding: var(--espaco-1);
+}
+
+
+/* Foco visível no menu hambúrguer */
+
+#menu-toggle:focus-visible + .menu-icon {
+    outline: 3px solid #ffffff;
+    outline-offset: 4px;
+    border-radius: var(--raio-pequeno);
 }
 
 
@@ -236,6 +258,7 @@ article img {
     gap: var(--espaco-3);
 }
 
+
 /* Elementos ocupando toda a largura */
 
 .grid > * {
@@ -308,9 +331,10 @@ input[type="checkbox"] {
 
 /* Foco dos campos */
 
-input:focus,
-select:focus {
-    outline: 2px solid var(--cor-secundaria);
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid var(--cor-secundaria);
+    outline-offset: 2px;
     border-color: var(--cor-secundaria);
 }
 
@@ -329,8 +353,9 @@ button {
     font-size: var(--tamanho-base);
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.2s ease,
-                transform 0.2s ease;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
 }
 
 button:hover {
@@ -338,9 +363,9 @@ button:hover {
     transform: translateY(-2px);
 }
 
-button:focus {
+button:focus-visible {
     outline: 3px solid var(--cor-secundaria);
-    outline-offset: 2px;
+    outline-offset: 3px;
 }
 
 
@@ -390,11 +415,13 @@ footer p {
         font-size: 2rem;
     }
 
+
     /* Mostra o botão hambúrguer */
 
     .menu-icon {
         display: block;
     }
+
 
     /* Esconde o menu inicialmente */
 
@@ -404,6 +431,7 @@ footer p {
         gap: var(--espaco-1);
         margin-top: var(--espaco-2);
     }
+
 
     /* Mostra o menu quando o hambúrguer é acionado */
 
@@ -517,8 +545,12 @@ footer p {
     article {
         padding: var(--espaco-1);
     }
-
 }
+
+
+/* =========================================
+   BADGE
+   ========================================= */
 
 .badge {
     display: inline-block;
@@ -531,7 +563,9 @@ footer p {
 }
 
 
-/* Alerta */
+/* =========================================
+   ALERTA
+   ========================================= */
 
 .alert {
     background-color: #e8f5e9;
@@ -542,7 +576,9 @@ footer p {
 }
 
 
-/* Modal */
+/* =========================================
+   MODAL
+   ========================================= */
 
 .modal {
     display: none;
